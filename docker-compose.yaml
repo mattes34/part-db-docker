@@ -43,6 +43,8 @@ services:
       # When this is empty the content of config/banner.md is used as banner
       #- BANNER=This is a test banner<br>with a line break
 
+      - PROVIDER_LCSC_ENABLED=1
+
   database:
     container_name: partdb_database
     image: mysql:8.0
