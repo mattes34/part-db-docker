@@ -44,6 +44,8 @@ services:
       #- BANNER=This is a test banner<br>with a line break
 
       - PROVIDER_LCSC_ENABLED=1
+      - PROVIDER_DIGIKEY_CLIENT_ID=${PROVIDER_DIGIKEY_CLIENT_ID}
+      - PROVIDER_DIGIKEY_SECRET=${PROVIDER_DIGIKEY_SECRET}
 
   database:
     container_name: partdb_database
