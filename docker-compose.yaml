@@ -24,6 +24,8 @@ services:
       # However you can add add any other environment configuration you want here
       # See .env file for all available options or https://docs.part-db.de/configuration.html
 
+      - DEFAULT_URI=${DEFAULT_URI}
+    
       # The language to use serverwide as default (en, de, ru, etc.)
       - DEFAULT_LANG=en
       # The default timezone to use serverwide (e.g. Europe/Berlin)
