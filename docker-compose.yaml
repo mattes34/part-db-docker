@@ -43,7 +43,7 @@ services:
 
       # Override value if you want to show to show a given text on homepage.
       # When this is empty the content of config/banner.md is used as banner
-      #- BANNER=This is a test banner<br>with a line break
+      - BANNER=Welcome<br>with a line break
 
       - PROVIDER_LCSC_ENABLED=1
       - PROVIDER_DIGIKEY_CLIENT_ID=${PROVIDER_DIGIKEY_CLIENT_ID}
