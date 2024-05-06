@@ -56,6 +56,8 @@ services:
       - PROVIDER_OCTOPART_CLIENT_ID=${PROVIDER_OCTOPART_CLIENT_ID}
       - PROVIDER_OCTOPART_SECRET=${PROVIDER_OCTOPART_SECRET}
 
+      - EDA_KICAD_CATEGORY_DEPTH=${EDA_KICAD_CATEGORY_DEPTH}
+
   database:
     container_name: partdb_database
     image: mysql:8.0
