@@ -45,6 +45,8 @@ services:
       # When this is empty the content of config/banner.md is used as banner
       - BANNER=Welcome<br>with a line break
 
+      - PROVIDER_ELEMENT14_KEY=${PROVIDER_ELEMENT14_KEY}
+      - PROVIDER_ELEMENT14_STORE_ID=${PROVIDER_ELEMENT14_STORE_ID}
       - PROVIDER_LCSC_ENABLED=1
       - PROVIDER_DIGIKEY_CLIENT_ID=${PROVIDER_DIGIKEY_CLIENT_ID}
       - PROVIDER_DIGIKEY_SECRET=${PROVIDER_DIGIKEY_SECRET}
