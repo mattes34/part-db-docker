@@ -2,6 +2,9 @@ version: '3.3'
 services:
   partdb:
     container_name: partdb
+    # Allow Watchtower to update only this container when triggered from Part-DB's Update Manager.
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     # By default Part-DB will be running under Port 8080, you can change it here
     ports:
       - '8080:80'
@@ -57,6 +60,23 @@ services:
       - PROVIDER_OCTOPART_SECRET=${PROVIDER_OCTOPART_SECRET}
 
       - EDA_KICAD_CATEGORY_DEPTH=${EDA_KICAD_CATEGORY_DEPTH}
+
+      # Watchtower integration for Part-DB's web-based Update Manager.
+      # Set WATCHTOWER_API_TOKEN in your .env file to the same strong secret used by the watchtower service below.
+      - WATCHTOWER_API_URL=http://watchtower:8080
+      - WATCHTOWER_API_TOKEN=${WATCHTOWER_API_TOKEN}
+
+  watchtower:
+    image: ghcr.io/nicholas-fedor/watchtower:latest
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_HTTP_API_UPDATE=true
+      - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_API_TOKEN}
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_CLEANUP=true
 
   database:
     container_name: partdb_database
