@@ -13,6 +13,8 @@ services:
       - ./uploads:/var/www/html/uploads
       - ./public_media:/var/www/html/public/media
       - ./db:/var/www/html/var/db
+      # Persist Update Manager backups across container recreations.
+      - ./backups:/var/www/html/var/backups
     restart: unless-stopped
     image: jbtronics/part-db1:latest
     depends_on:
@@ -21,6 +23,15 @@ services:
       - DATABASE_URL=mysql://partdb:${SECRET_USER_PASSWORD}@database:3306/partdb
       # In docker env logs will be redirected to stderr
       - APP_ENV=docker
+
+      # Run database migrations automatically after container updates.
+      # Part-DB marks this feature as experimental and writes migration backups to uploads/.automigration-backup.
+      - DB_AUTOMIGRATE=true
+
+      # Enable Update Manager web actions and backup restore in the UI.
+      # Backup restore is destructive, so only use it when you really need to roll back.
+      - DISABLE_WEB_UPDATES=0
+      - DISABLE_BACKUP_RESTORE=0
 
       # You can configure Part-DB using environment variables
       # Below you can find the most essential ones predefined
