@@ -32,6 +32,7 @@ services:
       # Backup restore is destructive, so only use it when you really need to roll back.
       - DISABLE_WEB_UPDATES=0
       - DISABLE_BACKUP_RESTORE=0
+      - DISABLE_BACKUP_DOWNLOAD=0
 
       # You can configure Part-DB using environment variables
       # Below you can find the most essential ones predefined
