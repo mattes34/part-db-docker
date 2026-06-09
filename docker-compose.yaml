@@ -78,6 +78,9 @@ services:
       - WATCHTOWER_API_URL=http://watchtower:8080
       - WATCHTOWER_API_TOKEN=${WATCHTOWER_API_TOKEN}
 
+
+      - APP_SECRET=${APP_SECRET}
+
   watchtower:
     image: ghcr.io/nicholas-fedor/watchtower:latest
     container_name: watchtower
