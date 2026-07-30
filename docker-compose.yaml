@@ -15,6 +15,8 @@ services:
       - ./db:/var/www/html/var/db
       # Persist Update Manager backups across container recreations.
       - ./backups:/var/www/html/var/backups
+      # Persist the MCP allowed_hosts override, otherwise Watchtower updates reset it to localhost-only.
+      - ./mcp.yaml:/var/www/html/config/packages/mcp.yaml:ro
     restart: unless-stopped
     image: jbtronics/part-db1:latest
     depends_on:

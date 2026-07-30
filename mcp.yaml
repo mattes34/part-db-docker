@@ -1,0 +1,21 @@
+mcp:
+    app: "Part-DB"
+    version: "0.1.0"
+    description: "Part-DB is a inventory management database for electronic parts."
+    instructions: |
+        This server provides inventory information for your current user. It is mostly used for electronic parts,
+        but can be used for any kind of inventory. The stored objects are called parts.
+        If you miss some information from an search endpoint, try to retrieve more details using the ID of an entity.
+
+    client_transports:
+        http: true
+        stdio: false
+    http:
+        path: "/mcp"
+        # DNS rebinding protection: default is localhost-only, which blocks every remote client.
+        # List every hostname clients will connect through (LAN IP, Tailscale hostname, etc.), without port.
+        allowed_hosts: ["192.168.1.170"]
+        session:
+            store: "file"
+            directory: "%kernel.cache_dir%/mcp"
+            ttl: 3600
