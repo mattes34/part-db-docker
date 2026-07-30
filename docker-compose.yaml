@@ -43,7 +43,7 @@ services:
 
       - DEFAULT_URI=${DEFAULT_URI}
       # Restrict which Host headers Part-DB accepts, to prevent Host header injection.
-      - TRUSTED_HOSTS=^(192\.168\.1\.170)$
+      - TRUSTED_HOSTS=${TRUSTED_HOSTS}
 
       # The language to use serverwide as default (en, de, ru, etc.)
       - DEFAULT_LANG=en
