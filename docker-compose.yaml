@@ -42,7 +42,9 @@ services:
       # See .env file for all available options or https://docs.part-db.de/configuration.html
 
       - DEFAULT_URI=${DEFAULT_URI}
-    
+      # Restrict which Host headers Part-DB accepts, to prevent Host header injection.
+      - TRUSTED_HOSTS=^(192\.168\.1\.170)$
+
       # The language to use serverwide as default (en, de, ru, etc.)
       - DEFAULT_LANG=en
       # The default timezone to use serverwide (e.g. Europe/Berlin)
